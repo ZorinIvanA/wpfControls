@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "x5wpf", "x5wpf\x5wpf.csproj", "{30B64B3A-8AA6-4F10-943E-3862A2E061DA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfApp1", "WpfApp1\WpfApp1.csproj", "{48F3B510-905F-4E5C-83C5-87E0D8430DA1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{30B64B3A-8AA6-4F10-943E-3862A2E061DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30B64B3A-8AA6-4F10-943E-3862A2E061DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30B64B3A-8AA6-4F10-943E-3862A2E061DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30B64B3A-8AA6-4F10-943E-3862A2E061DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{48F3B510-905F-4E5C-83C5-87E0D8430DA1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48F3B510-905F-4E5C-83C5-87E0D8430DA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48F3B510-905F-4E5C-83C5-87E0D8430DA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48F3B510-905F-4E5C-83C5-87E0D8430DA1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

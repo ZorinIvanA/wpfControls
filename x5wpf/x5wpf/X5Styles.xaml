@@ -303,8 +303,8 @@
     <ControlTemplate x:Key="ButtonExTemplate" TargetType="{x:Type controls:ButtonEx}">
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="{TemplateBinding RectangleWidth}"></ColumnDefinition>
-                <ColumnDefinition Width="{TemplateBinding NoseWidth}"></ColumnDefinition>
+                <ColumnDefinition Width="{Binding RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Path=RectangleWidth}"></ColumnDefinition>
+                <ColumnDefinition Width="{Binding RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Path=NoseWidth}"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <Border Grid.Column="0" BorderBrush="Aqua" BorderThickness="1"></Border>
             <Border Grid.Column="1" BorderBrush="Green" BorderThickness="1"></Border>
@@ -312,7 +312,7 @@
                         Height="{TemplateBinding Height}"
                         Background="Blue" BorderBrush="Black" BorderThickness="2"
                         CornerRadius="{TemplateBinding Corners}">
-
+                <ContentPresenter Content="{TemplateBinding Content}"></ContentPresenter>
             </Border>
 
             <Path Stroke="Red" StrokeThickness="2" Fill="Beige" Grid.Column="1">
@@ -336,6 +336,6 @@
             </Path>
         </Grid>
 
-        </ControlTemplate>
+    </ControlTemplate>
 
 </ResourceDictionary>

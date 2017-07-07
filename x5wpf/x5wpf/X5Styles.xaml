@@ -44,57 +44,7 @@
         </Border>
     </ControlTemplate>
 
-    <Style x:Key="GreenRightButton" TargetType="Button">
-        <Style.Triggers>
-            <Trigger Property="IsPressed" Value="True">
-                <Setter Property="Template" Value="{StaticResource NavTextButtonRight}"></Setter>
-                <Setter Property="Background" Value="#71bf44"></Setter>
-                <Setter Property="Foreground" Value="White"></Setter>
-                <Setter Property="Width" Value="400"></Setter>
-                <Setter Property="Height" Value="80"></Setter>
-            </Trigger>
-            <Trigger Property="IsPressed" Value="False">
-                <Setter Property="Template" Value="{StaticResource NavTextButtonRight}"></Setter>
-                <Setter Property="Background" Value="#015826"></Setter>
-                <Setter Property="Foreground" Value="White"></Setter>
-                <Setter Property="Width" Value="400"></Setter>
-                <Setter Property="Height" Value="80"></Setter>
-            </Trigger>
-            <Trigger Property="IsEnabled" Value="False">
-                <Setter Property="Template" Value="{StaticResource NavTextButtonRight}"></Setter>
-                <Setter Property="Background" Value="#658d53"></Setter>
-                <Setter Property="Foreground" Value="#335927"></Setter>
-                <Setter Property="Width" Value="400"></Setter>
-                <Setter Property="Height" Value="80"></Setter>
-            </Trigger>
-        </Style.Triggers>
-    </Style>
 
-    <Style x:Key="LightGreenRightButton" TargetType="Button">
-        <Style.Triggers>
-            <Trigger Property="IsPressed" Value="True">
-                <Setter Property="Template" Value="{StaticResource NavTextButtonRight}"></Setter>
-                <Setter Property="Background" Value="#015826"></Setter>
-                <Setter Property="Foreground" Value="White"></Setter>
-                <Setter Property="Width" Value="400"></Setter>
-                <Setter Property="Height" Value="80"></Setter>
-            </Trigger>
-            <Trigger Property="IsPressed" Value="False">
-                <Setter Property="Template" Value="{StaticResource NavTextButtonRight}"></Setter>
-                <Setter Property="Background" Value="#71bf44"></Setter>
-                <Setter Property="Foreground" Value="White"></Setter>
-                <Setter Property="Width" Value="400"></Setter>
-                <Setter Property="Height" Value="80"></Setter>
-            </Trigger>
-            <Trigger Property="IsEnabled" Value="False">
-                <Setter Property="Template" Value="{StaticResource NavTextButtonRight}"></Setter>
-                <Setter Property="Background" Value="#658d53"></Setter>
-                <Setter Property="Foreground" Value="#335927"></Setter>
-                <Setter Property="Width" Value="400"></Setter>
-                <Setter Property="Height" Value="80"></Setter>
-            </Trigger>
-        </Style.Triggers>
-    </Style>
 
     <Style x:Key="WhiteRightButton" TargetType="Button">
         <Style.Triggers>
@@ -300,42 +250,88 @@
 
 
     <!--custom button control -->
-    <ControlTemplate x:Key="ButtonExTemplate" TargetType="{x:Type controls:ButtonEx}">
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="{Binding RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Path=RectangleWidth}"></ColumnDefinition>
-                <ColumnDefinition Width="{Binding RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Path=NoseWidth}"></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-            <Border Grid.Column="0" BorderBrush="Aqua" BorderThickness="1"></Border>
-            <Border Grid.Column="1" BorderBrush="Green" BorderThickness="1"></Border>
-            <Border  
-                        Height="{TemplateBinding Height}"
-                        Background="Blue" BorderBrush="Black" BorderThickness="2"
-                        CornerRadius="{TemplateBinding Corners}">
-                <ContentPresenter Content="{TemplateBinding Content}"></ContentPresenter>
+    <DataTemplate x:Key="TextForButton">
+        <TextBlock FontFamily="{StaticResource RotondacBold}" Foreground="{TemplateBinding controls:ButtonEx.Foreground}" FontSize="40" Text="{TemplateBinding controls:ButtonEx.Content}"
+                                       HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+    </DataTemplate>
+
+    <ControlTemplate x:Key="ButtonExTemplateRight" TargetType="{x:Type controls:ButtonEx}">
+        <StackPanel Orientation="Horizontal" Width="{TemplateBinding Width}">
+            <Border  Height="{TemplateBinding Height}" Background="{TemplateBinding Background}" CornerRadius="{TemplateBinding Corners}" Width="{TemplateBinding RectangleWidth}">
+                <ContentPresenter Content="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Content}" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                  ContentTemplate="{StaticResource TextForButton}"/>
             </Border>
-
-            <Path Stroke="Red" StrokeThickness="2" Fill="Beige" Grid.Column="1">
-                <Path.Data>
-                    <PathGeometry>
-                        <PathGeometry.Figures>
-                            <PathFigureCollection>
-                                <PathFigure StartPoint="{TemplateBinding StartPoint}">
-                                    <PathFigure.Segments>
-                                        <PathSegmentCollection>
-                                            <BezierSegment Point1="{TemplateBinding Point1}"
-                                                       Point2="{TemplateBinding Point2}"
-                                                       Point3="{TemplateBinding EndPoint}" />
-                                        </PathSegmentCollection>
-                                    </PathFigure.Segments>
-                                </PathFigure>
-                            </PathFigureCollection>
-                        </PathGeometry.Figures>
-                    </PathGeometry>
-                </Path.Data>
-            </Path>
-        </Grid>
-
+            <Border Width="{TemplateBinding NoseWidth}">
+                <Path Fill="{TemplateBinding Background}" Data="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=PathString}" Margin="-1,0,0,0"/>
+            </Border>
+        </StackPanel>
     </ControlTemplate>
 
+    <ControlTemplate x:Key="ButtonExTemplateLeft" TargetType="{x:Type controls:ButtonEx}">
+        <StackPanel Orientation="Horizontal" Width="{TemplateBinding Width}">
+            <Border Width="{TemplateBinding NoseWidth}">
+                <Path Fill="{TemplateBinding Background}" Data="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=PathString}" />
+            </Border>
+            <Border  Height="{TemplateBinding Height}" Background="{TemplateBinding Background}" CornerRadius="{TemplateBinding Corners}" Width="{TemplateBinding RectangleWidth}" Margin="-1,0,0,0">
+                <ContentPresenter Content="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Content}" HorizontalAlignment="Center" VerticalAlignment="Center" 
+                                  ContentTemplate="{StaticResource TextForButton}"/>
+            </Border>
+        </StackPanel>
+    </ControlTemplate>
+
+
+    <Style x:Key="NoseTextButton" TargetType="{x:Type controls:ButtonEx}">
+        <Style.Triggers>
+            <Trigger Property="Direction" Value="Right">
+                <Setter Property="Template" Value="{StaticResource ButtonExTemplateRight}"></Setter>
+            </Trigger>
+            <Trigger Property="Direction" Value="Left">
+                <Setter Property="Template" Value="{StaticResource ButtonExTemplateLeft}"></Setter>
+            </Trigger>
+        </Style.Triggers>
+        <Setter Property="Width" Value="320"></Setter>
+        <Setter Property="Height" Value="80"></Setter>
+        <Setter Property="NoseWidth" Value="60"></Setter>
+        <Setter Property="ArcSize" Value="60"></Setter>
+    </Style>
+
+    <Style x:Key="GreenRightButton" TargetType="controls:ButtonEx" BasedOn="{StaticResource NoseTextButton}">
+        <Setter Property="Width" Value="400"></Setter>
+        <Setter Property="Height" Value="80"></Setter>
+        <Setter Property="Direction" Value="Right"></Setter>
+        <Style.Triggers>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Background" Value="#71bf44"></Setter>
+                <Setter Property="Foreground" Value="White"></Setter>
+            </Trigger>
+            <Trigger Property="IsPressed" Value="False">
+                <Setter Property="Background" Value="#015826"></Setter>
+                <Setter Property="Foreground" Value="White"></Setter>
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Background" Value="#658d53"></Setter>
+                <Setter Property="Foreground" Value="#335927"></Setter>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    
+    <Style x:Key="LightGreenRightButton" TargetType="controls:ButtonEx" BasedOn="{StaticResource NoseTextButton}">
+        <Setter Property="Width" Value="400"></Setter>
+        <Setter Property="Height" Value="80"></Setter>
+        <Setter Property="Direction" Value="Right"></Setter>
+        <Style.Triggers>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Background" Value="#015826"></Setter>
+                <Setter Property="Foreground" Value="White"></Setter>
+            </Trigger>
+            <Trigger Property="IsPressed" Value="False">
+                <Setter Property="Background" Value="#71bf44"></Setter>
+                <Setter Property="Foreground" Value="White"></Setter>
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Background" Value="#658d53"></Setter>
+                <Setter Property="Foreground" Value="#335927"></Setter>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
 </ResourceDictionary>

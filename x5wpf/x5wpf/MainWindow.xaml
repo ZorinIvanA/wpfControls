@@ -28,9 +28,9 @@
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-        <Button Style="{StaticResource GreenRightButton}" Content="Нормальная" Grid.Row="0"></Button>
-        <Button Style="{StaticResource GreenRightButton}" Content="Заблокирована" Grid.Row="1" IsEnabled="False"/>
-        <Button Style="{StaticResource LightGreenRightButton}" Content="Светлая" Grid.Row="2"></Button>
+        <controls:ButtonEx Style="{StaticResource GreenRightButton}" Content="Нормальная" Grid.Row="0"></controls:ButtonEx>
+        <controls:ButtonEx Style="{StaticResource GreenRightButton}" Content="Заблокирована" Grid.Row="1" IsEnabled="False"/>
+        <controls:ButtonEx Style="{StaticResource LightGreenRightButton}" Content="Светлая" Grid.Row="2"></controls:ButtonEx>
         <Button Style="{StaticResource WhiteRightButton}" Content="Белая" Grid.Row="3" />
         <Button Style="{StaticResource GreenLeftButton}" Content="Нормальная" Grid.Row="4" />
         <Button Style="{StaticResource LightGreenLeftButton}" Content="Светлая" Grid.Row="5" />
@@ -44,10 +44,8 @@
         <Button Style="{StaticResource SquareButton}" Content="1" Grid.Row="0" Grid.Column="2" Grid.RowSpan="3"
                 HorizontalAlignment="Center" VerticalAlignment="Center" Height="300" Width="300"></Button>
 
-        <controls:ButtonEx Template="{StaticResource ResourceKey=ButtonExTemplate}"
-            Grid.Column="2" Grid.Row="4" Grid.RowSpan="2"
-                                    Width="350" Height="80" VerticalAlignment="Center" HorizontalAlignment="Center" 
-                                    NosePosition="290" ArcSize="50"
-                                    >123</controls:ButtonEx>
+        <controls:ButtonEx Style="{StaticResource NoseTextButton}" Grid.Column="2" Grid.Row="4" Grid.RowSpan="2"
+                           VerticalAlignment="Center" HorizontalAlignment="Center" 
+                           Direction="Right">123</controls:ButtonEx>
     </Grid>
 </Window>

@@ -28,24 +28,22 @@
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-        <controls:ButtonEx Style="{StaticResource GreenRightButton}" Content="Нормальная" Grid.Row="0"></controls:ButtonEx>
-        <controls:ButtonEx Style="{StaticResource GreenRightButton}" Content="Заблокирована" Grid.Row="1" IsEnabled="False"/>
-        <controls:ButtonEx Style="{StaticResource LightGreenRightButton}" Content="Светлая" Grid.Row="2"></controls:ButtonEx>
-        <Button Style="{StaticResource WhiteRightButton}" Content="Белая" Grid.Row="3" />
-        <Button Style="{StaticResource GreenLeftButton}" Content="Нормальная" Grid.Row="4" />
-        <Button Style="{StaticResource LightGreenLeftButton}" Content="Светлая" Grid.Row="5" />
-        <Button Style="{StaticResource WhiteLeftButton}" Content="Белая" Grid.Row="0" Grid.Column="1" />
-        <Button Style="{StaticResource LightGreenLeftButton}" Content="Заблокирована" Grid.Row="1"  Grid.Column="1" IsEnabled="False"/>
-        <Button Style="{StaticResource GreenCommonButton}" Content="Зелёная" Grid.Row="2" Grid.Column="1" />
-        <Button Style="{StaticResource LightGreenCommonButton}" Content="Светлая" Grid.Row="3"  Grid.Column="1"/>
+        <controls:ButtonEx Style="{StaticResource GreenRightButton}" Content="Норма вправо" Grid.Row="0"></controls:ButtonEx>
+        <controls:ButtonEx Style="{StaticResource GreenRightButton}" Content="Блок вправо" Grid.Row="1" IsEnabled="False"/>
+        <controls:ButtonEx Style="{StaticResource LightGreenRightButton}" Content="Светлая вправо" Grid.Row="2"></controls:ButtonEx>
+        <controls:ButtonEx Style="{StaticResource WhiteRightButton}" Content="Белая вправо" Grid.Row="3" />
+        <controls:ButtonEx Style="{StaticResource GreenLeftButton}" Content="Норма влево" Grid.Row="4" />
+        <controls:ButtonEx Style="{StaticResource LightGreenLeftButton}" Content="Светлая влево" Grid.Row="5" />
+        <controls:ButtonEx Style="{StaticResource WhiteLeftButton}" Content="Белая влево" Grid.Row="0" Grid.Column="1" />
+        <controls:ButtonEx Style="{StaticResource LightGreenLeftButton}" Content="Блок влево" Grid.Row="1"  Grid.Column="1" IsEnabled="False"/>
+        <Button Style="{StaticResource GreenCommonButton}" Content="Зелёная влево" Grid.Row="2" Grid.Column="1" />
+        <Button Style="{StaticResource LightGreenCommonButton}" Content="Светлая " Grid.Row="3"  Grid.Column="1"/>
         <Button Style="{StaticResource WhiteCommonButton}" Content="Белая" Grid.Row="4"  Grid.Column="1"/>
-        <Button Style="{StaticResource WhiteCommonButton}" Content="Заблокирована" Grid.Row="5"  Grid.Column="1" IsEnabled="False"/>
+        <Button Style="{StaticResource WhiteCommonButton}" Content="Блок" Grid.Row="5"  Grid.Column="1" IsEnabled="False"/>
 
-        <Button Style="{StaticResource SquareButton}" Content="1" Grid.Row="0" Grid.Column="2" Grid.RowSpan="3"
+        <Button Visibility="Collapsed" Style="{StaticResource SquareButton}" Content="1" Grid.Row="0" Grid.Column="2" Grid.RowSpan="3"
                 HorizontalAlignment="Center" VerticalAlignment="Center" Height="300" Width="300"></Button>
 
-        <controls:ButtonEx Style="{StaticResource NoseTextButton}" Grid.Column="2" Grid.Row="4" Grid.RowSpan="2"
-                           VerticalAlignment="Center" HorizontalAlignment="Center" 
-                           Direction="Right">123</controls:ButtonEx>
+
     </Grid>
 </Window>

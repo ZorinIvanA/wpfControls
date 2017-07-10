@@ -266,7 +266,6 @@
             </Border>
         </StackPanel>
     </ControlTemplate>
-
     <ControlTemplate x:Key="ButtonExTemplateLeft" TargetType="{x:Type controls:ButtonEx}">
         <StackPanel Orientation="Horizontal" Width="{TemplateBinding Width}">
             <Border Width="{TemplateBinding NoseWidth}">
@@ -278,7 +277,6 @@
             </Border>
         </StackPanel>
     </ControlTemplate>
-
 
     <Style x:Key="NoseTextButton" TargetType="{x:Type controls:ButtonEx}">
         <Style.Triggers>
@@ -294,7 +292,6 @@
         <Setter Property="NoseWidth" Value="60"></Setter>
         <Setter Property="ArcSize" Value="60"></Setter>
     </Style>
-
     <Style x:Key="GreenRightButton" TargetType="controls:ButtonEx" BasedOn="{StaticResource NoseTextButton}">
         <Setter Property="Width" Value="400"></Setter>
         <Setter Property="Height" Value="80"></Setter>
@@ -314,7 +311,6 @@
             </Trigger>
         </Style.Triggers>
     </Style>
-    
     <Style x:Key="LightGreenRightButton" TargetType="controls:ButtonEx" BasedOn="{StaticResource NoseTextButton}">
         <Setter Property="Width" Value="400"></Setter>
         <Setter Property="Height" Value="80"></Setter>
@@ -333,5 +329,118 @@
                 <Setter Property="Foreground" Value="#335927"></Setter>
             </Trigger>
         </Style.Triggers>
+    </Style>
+
+    <!--Rounded rectangle button control -->
+    <ControlTemplate x:Key="RoundedRectangleButton" TargetType="{x:Type controls:RoundedRectangleButton}">
+        <Grid>
+            <Path Fill="{TemplateBinding Background}" Data="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=ButtonPathString}" />
+            <ContentPresenter Content="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Content}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        </Grid>
+    </ControlTemplate>
+
+    <Style x:Key="MainMenuGetButton" TargetType="{x:Type controls:RoundedRectangleButton}">
+        <Setter Property="Width" Value="500"/>
+        <Setter Property="Height" Value="500"/>
+        <Setter Property="ArcSize" Value="60"/>
+        <Setter Property="Template" Value="{StaticResource RoundedRectangleButton}"></Setter>
+        <Setter Property="Background" Value="White"/>
+        <Style.Triggers>
+            <Trigger Property="IsPressed" Value="False">
+                <Setter Property="Content">
+                    <Setter.Value>
+                        <Grid HorizontalAlignment="Left">
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Image Source="Images\cart.png" HorizontalAlignment="Left" Margin="0,0,0,0" Stretch="Uniform" Width="90" Height="110"></Image>
+                            <TextBlock Text="Забрать &#x0a;заказ" Foreground="#015826" FontSize="70" Grid.Row="1" HorizontalAlignment="Left" TextWrapping="Wrap" Margin="0,60,0,0"
+                                       FontFamily="{StaticResource RotondacBold}"></TextBlock>
+                        </Grid>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="Foreground" Value="#015826"/>
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Content">
+                    <Setter.Value>
+                        <Grid HorizontalAlignment="Left">
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Image Source="Images\cart.png" HorizontalAlignment="Left" Margin="0,0,0,0" Stretch="Uniform" Width="90" Height="110"></Image>
+                            <TextBlock Text="Забрать &#x0a;заказ" Foreground="#71bf44" FontSize="70" Grid.Row="1" HorizontalAlignment="Left" TextWrapping="Wrap" Margin="0,60,0,0"
+                                       FontFamily="{StaticResource RotondacBold}"></TextBlock>
+                        </Grid>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="Foreground" Value="#015826"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <Style x:Key="MainMenuReturnButton" TargetType="{x:Type controls:RoundedRectangleButton}">
+        <Setter Property="Width" Value="500"/>
+        <Setter Property="Height" Value="500"/>
+        <Setter Property="ArcSize" Value="60"/>
+        <Setter Property="Template" Value="{StaticResource RoundedRectangleButton}"></Setter>
+        <Setter Property="Foreground" Value="White"/>
+        <Style.Triggers>
+            <Trigger Property="IsPressed" Value="False">
+                <Setter Property="Content">
+                    <Setter.Value>
+                        <Grid HorizontalAlignment="Left">
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Image Source="Images\return.png" HorizontalAlignment="Left" Margin="0,0,0,0" Stretch="Uniform" Width="90" Height="110"></Image>
+                            <TextBlock Text="Вернуть &#x0a;заказ" FontSize="70" Grid.Row="1" HorizontalAlignment="Left" TextWrapping="Wrap" Margin="0,60,0,0"
+                                       FontFamily="{StaticResource RotondacBold}" 
+                                       Foreground="White"></TextBlock>
+                        </Grid>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="Background" Value="#71bf44"/>
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Content">
+                    <Setter.Value>
+                        <Grid HorizontalAlignment="Left">
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Image Source="Images\return.png" HorizontalAlignment="Left" Margin="0,0,0,0" Stretch="Uniform" Width="90" Height="110"></Image>
+                            <TextBlock Text="Вернуть &#x0a;заказ" FontSize="70" Grid.Row="1" HorizontalAlignment="Left" TextWrapping="Wrap" Margin="0,60,0,0"
+                                       FontFamily="{StaticResource RotondacBold}" 
+                                       Foreground="White"></TextBlock>
+                        </Grid>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="Background" Value="#015826"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <!--Textblocks-->
+    <Style x:Key="BigStatusTextBlock" TargetType="{x:Type TextBlock}">
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="FontFamily" Value="{StaticResource RotondacBold}"/>
+        <Setter Property="FontSize" Value="40"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>        
+    </Style>
+    <Style x:Key="SmallStatusTextBlock" TargetType="{x:Type TextBlock}">
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="FontFamily" Value="{StaticResource Rotondac}"/>
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+    </Style>
+    <Style x:Key="MediumStatusTextBlock" TargetType="{x:Type TextBlock}">
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="FontFamily" Value="{StaticResource RotondacBold}"/>
+        <Setter Property="FontSize" Value="30"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
     </Style>
 </ResourceDictionary>

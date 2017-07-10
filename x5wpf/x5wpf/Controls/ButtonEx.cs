@@ -23,22 +23,14 @@ namespace x5wpf.Controls
     {
         #region Описание "носика" кнопки
         /// <summary>
-        /// Ширина прямоугольника кнопки
+        /// Рисунок носика
         /// </summary>
-        public static readonly DependencyProperty RectangleWidthProperty = DependencyProperty.Register("RectangleWidth", typeof(Double), typeof(ButtonEx),
-            new PropertyMetadata(Double.NaN, new PropertyChangedCallback((d, e) =>
-            {
-                var x = d as ButtonEx;
-                if (x != null)
-                {
-                    x.RectangleWidth = (Double)e.NewValue;
-                }
-                StaticPropertyChanged(d, "RectangleWidth");
-            })));
-        public Double RectangleWidth
+        public static readonly DependencyProperty PathStringProperty = DependencyProperty.Register("PathString", typeof(String), typeof(ButtonEx),
+            new PropertyMetadata(String.Empty, new PropertyChangedCallback((d, e) => { StaticPropertyChanged(d, "PathString"); })));
+        public String PathString
         {
-            get { return (Double)GetValue(RectangleWidthProperty); }
-            private set { SetValue(RectangleWidthProperty, value); }
+            get { return (String)GetValue(PathStringProperty); }
+            set { SetValue(PathStringProperty, value); }
         }
 
         /// <summary>
@@ -139,18 +131,28 @@ namespace x5wpf.Controls
             get { return (CornerRadius)GetValue(CornersProperty); }
             private set { SetValue(CornersProperty, value); }
         }
-        #endregion
 
         /// <summary>
-        /// Рисунок носика
+        /// Ширина прямоугольника кнопки
         /// </summary>
-        public static readonly DependencyProperty PathStringProperty = DependencyProperty.Register("PathString", typeof(String), typeof(ButtonEx),
-            new PropertyMetadata(String.Empty, new PropertyChangedCallback((d, e) => { StaticPropertyChanged(d, "PathString"); })));
-        public String PathString
+        public static readonly DependencyProperty RectangleWidthProperty = DependencyProperty.Register("RectangleWidth", typeof(Double), typeof(ButtonEx),
+            new PropertyMetadata(Double.NaN, new PropertyChangedCallback((d, e) =>
+            {
+                var x = d as ButtonEx;
+                if (x != null)
+                {
+                    x.RectangleWidth = (Double)e.NewValue;
+                }
+                StaticPropertyChanged(d, "RectangleWidth");
+            })));
+        public Double RectangleWidth
         {
-            get { return (String)GetValue(PathStringProperty); }
-            set { SetValue(PathStringProperty, value); }
+            get { return (Double)GetValue(RectangleWidthProperty); }
+            private set { SetValue(RectangleWidthProperty, value); }
         }
+        #endregion
+
+
 
         static ButtonEx()
         {

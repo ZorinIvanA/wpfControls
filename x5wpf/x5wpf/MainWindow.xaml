@@ -5,8 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:x5wpf"
         xmlns:controls="clr-namespace:x5wpf.Controls"
+        xmlns:gl="clr-namespace:System.Globalization;assembly=mscorlib"
         mc:Ignorable="d"
-        Title="MainWindow" Height="700" Width="1280" Background="LightGray">
+        Title="MainWindow" Height="1024" Width="1280" Background="LightGray">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -14,38 +15,56 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-        </Grid.RowDefinitions>
-        <controls:ButtonEx Style="{StaticResource GreenRightButton}" Content="Нормальная" Grid.Row="0"></controls:ButtonEx>
-        <controls:ButtonEx Style="{StaticResource GreenRightButton}" Content="Заблокирована" Grid.Row="1" IsEnabled="False"/>
-        <controls:ButtonEx Style="{StaticResource LightGreenRightButton}" Content="Светлая" Grid.Row="2"></controls:ButtonEx>
-        <Button Style="{StaticResource WhiteRightButton}" Content="Белая" Grid.Row="3" />
-        <Button Style="{StaticResource GreenLeftButton}" Content="Нормальная" Grid.Row="4" />
-        <Button Style="{StaticResource LightGreenLeftButton}" Content="Светлая" Grid.Row="5" />
-        <Button Style="{StaticResource WhiteLeftButton}" Content="Белая" Grid.Row="0" Grid.Column="1" />
-        <Button Style="{StaticResource LightGreenLeftButton}" Content="Заблокирована" Grid.Row="1"  Grid.Column="1" IsEnabled="False"/>
-        <Button Style="{StaticResource GreenCommonButton}" Content="Зелёная" Grid.Row="2" Grid.Column="1" />
-        <Button Style="{StaticResource LightGreenCommonButton}" Content="Светлая" Grid.Row="3"  Grid.Column="1"/>
-        <Button Style="{StaticResource WhiteCommonButton}" Content="Белая" Grid.Row="4"  Grid.Column="1"/>
-        <Button Style="{StaticResource WhiteCommonButton}" Content="Заблокирована" Grid.Row="5"  Grid.Column="1" IsEnabled="False"/>
-
-        <Button Style="{StaticResource SquareButton}" Content="1" Grid.Row="0" Grid.Column="2" Grid.RowSpan="3"
-                HorizontalAlignment="Center" VerticalAlignment="Center" Height="300" Width="300"></Button>
-
-        <controls:ButtonEx Style="{StaticResource NoseTextButton}" Grid.Column="2" Grid.Row="4" Grid.RowSpan="2"
-                           VerticalAlignment="Center" HorizontalAlignment="Center" 
-                           Direction="Right">123</controls:ButtonEx>
-    </Grid>
+    <Window.DataContext>
+        <local:MainWindowViewModel></local:MainWindowViewModel>
+    </Window.DataContext>
+    <ScrollViewer>
+        <DockPanel Height="Auto" Width="1280" HorizontalAlignment="Center">
+            <DockPanel.Background>
+                <RadialGradientBrush GradientOrigin="0.5,0" Center="0.5,0" RadiusX="1" RadiusY="1">
+                    <GradientStop Offset="0" Color="#71bf44"></GradientStop>
+                    <GradientStop Offset="1" Color="#015826"></GradientStop>
+                </RadialGradientBrush>
+            </DockPanel.Background>
+            <Grid DockPanel.Dock="Top" Height="120">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition Width="420"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="45"></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <TextBlock Text="{Binding NowDate, StringFormat='{}{0:dd MMMM yyyy}'}" Style="{StaticResource SmallStatusTextBlock}" Margin="20,0"/>
+                <TextBlock Grid.Column="2" Text="Служба поддержки" HorizontalAlignment="Right" Style="{StaticResource SmallStatusTextBlock}" Margin="20,0"/>
+                <TextBlock Grid.Row="1" Text="{Binding TerminalNumber}" Style="{StaticResource BigStatusTextBlock}" Margin="20,0,0,10"/>
+                <TextBlock Grid.Row="1" Text="{Binding PhoneNumber}" Grid.Column="2" HorizontalAlignment="Right" Style="{StaticResource BigStatusTextBlock}" Margin="0,0,20,10"/>
+                <Image Source="Images\x5logo.png" Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" VerticalAlignment="Bottom"/>
+            </Grid>
+            <Grid DockPanel.Dock="Bottom" Height="120">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Eng" Style="{StaticResource MediumStatusTextBlock}" Margin="30,0"/>
+                    <StackPanel Orientation="Horizontal" Grid.Column="1" HorizontalAlignment="Center">
+                        <Image Source="Images\question.png" Width="60" Height="60"/>
+                        <TextBlock Text="Как пользоваться" Style="{StaticResource MediumStatusTextBlock}" Margin="30,0" />
+                    </StackPanel>
+                    <Image Grid.Column="2" Source="Images\scanner.png" HorizontalAlignment="Right" Margin="20,0" Width="100" Height="100"/>
+                </Grid>
+            </Grid>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <controls:RoundedRectangleButton Style="{StaticResource MainMenuReturnButton}"></controls:RoundedRectangleButton>
+                <controls:RoundedRectangleButton Style="{StaticResource MainMenuGetButton}" Grid.Column="1"></controls:RoundedRectangleButton>
+            </Grid>
+        </DockPanel>
+    </ScrollViewer>
 </Window>
